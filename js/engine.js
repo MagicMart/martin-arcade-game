@@ -77,11 +77,17 @@ var Engine = (function(global) {
      * functionality this way (you could just implement collision detection
      * on the entities themselves within your app.js file).
      */
+     function endGame() {
+        alert('Game over!');
+     }
+
     function checkCollisions() {
         allEnemies.forEach(function(element) {
             if (element.y === player.y && (element.x >= player.x - 60 && element.x <= player.x + 70)) {
                 document.body.style = "background: red";
-                console.log("Enemy x " + element.x + "Player" + player.x);
+                player.y = 390;
+                player.lives -= 1;
+                if (player.lives < 1) {endGame();}
                 setTimeout(function() { document.body.style = "background: white" }, 1000);
 
                 console.log('die');
