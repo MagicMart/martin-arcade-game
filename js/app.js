@@ -26,7 +26,12 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
+const Player = function(x, y) {
+    this.x = x;
+    this.y = y;
+    this.sprite = 'images/char-boy.png';
 
+}
 
 // Now instantiate your objects.
 const enemy1 = new Enemy(0, 70, 450); //x, y and speed
@@ -37,6 +42,7 @@ const enemy3 = new Enemy(0, 230, 300);
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [enemy1, enemy2, enemy3];
 // Place the player object in a variable called player
+const player = new Player(202, 390);// x , y
 
 
 
