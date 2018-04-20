@@ -16,6 +16,9 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    if (this.x > 505) { this.x = -100 };
+
+    this.x += this.speed * dt;
 };
 
 // Draw the enemy on the screen, required method for game
@@ -63,11 +66,28 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+Player.prototype.handleInput = function(direction) {
+    switch (direction) {
+        case "up":
+            this.direction = 'up';
+            break;
+        case "down":
+            this.direction = 'down';
+            break;
+        case "left":
+            this.direction = 'left';
+            break;
+        case "right":
+            this.direction = 'right';
+            break;
+    }
+};
+
 
 // Now instantiate your objects.
 const enemy1 = new Enemy(0, 70, 450); //x, y and speed
 
-const enemy2 = new Enemy(0, 150, 15);
+const enemy2 = new Enemy(0, 150, 150);
 
 const enemy3 = new Enemy(0, 230, 300);
 // Place all enemy objects in an array called allEnemies
