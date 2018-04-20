@@ -33,6 +33,32 @@ const Player = function(x, y) {
 
 }
 
+Player.prototype.update = function() {
+    switch (this.direction) {
+        case 'up':
+            if (this.y < 0){break};
+            this.y -= 80;
+            this.direction = "";
+            break;
+        case 'down':
+            if (this.y > 350){break};
+            this.y += 80;
+            this.direction = "";
+            break;
+        case "left":
+             if (this.x < 100){break};
+            this.x -= 101;
+            this.direction = "";
+            break;
+        case "right":
+             if (this.x > 350){break};
+            this.x += 101;
+            this.direction = "";
+            break;
+    }
+
+};
+
 // Now instantiate your objects.
 const enemy1 = new Enemy(0, 70, 450); //x, y and speed
 
