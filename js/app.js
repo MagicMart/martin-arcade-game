@@ -59,6 +59,11 @@ Player.prototype.update = function() {
 
 };
 
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+
 // Now instantiate your objects.
 const enemy1 = new Enemy(0, 70, 450); //x, y and speed
 
