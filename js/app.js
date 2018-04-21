@@ -49,6 +49,8 @@ Player.prototype.increaseScore = function() {
 }
 
 Player.prototype.update = function() {
+    const score = document.querySelector('#score');
+    score.textContent = this.score;
     if (this.y === -10) { this.increaseScore(); }
     this.x +=this.speedX;
     this.y +=this.speedY;

@@ -1,3 +1,10 @@
 body {
     text-align: center;
 }
+
+#score-place {
+    position: absolute;
+    left: 200px;
+    top: 20px;
+    font-size: 2em;
+}
