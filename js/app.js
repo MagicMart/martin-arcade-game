@@ -47,31 +47,23 @@ Player.prototype.increaseScore = function() {
 }
 
 Player.prototype.update = function() {
-    if(this.y === -10) {this.increaseScore();}
+    if (this.y === -10) { this.increaseScore(); }
     switch (this.direction) {
-        case 'up':
-            if (this.y < 0) { break };
+        case "up":
             this.y -= 80;
-            this.direction = "";
             break;
         case 'down':
-            if (this.y > 350) { break };
             this.y += 80;
-            this.direction = "";
             break;
         case "left":
-            if (this.x < 100) { break };
             this.x -= 101;
-            this.direction = "";
             break;
         case "right":
-            if (this.x > 350) { break };
             this.x += 101;
-            this.direction = "";
             break;
     }
 
-
+    this.direction = "";
 };
 
 Player.prototype.render = function() {
@@ -79,18 +71,23 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.handleInput = function(direction) {
+
     switch (direction) {
 
         case "up":
-            this.direction = 'up';
+            if (this.y < 0) { break };
+            this.direction = "up";
             break;
         case "down":
+            if (this.y > 350) { break };
             this.direction = 'down';
             break;
         case "left":
+            if (this.x < 100) { break };
             this.direction = 'left';
             break;
         case "right":
+            if (this.x > 350) { break };
             this.direction = 'right';
             break;
     }
