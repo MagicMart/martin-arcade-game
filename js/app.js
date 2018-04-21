@@ -29,12 +29,14 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-const Player = function(x, y, lives, score) {
+const Player = function(x, y, lives, score, speedX, speedY) {
     this.x = x;
     this.y = y;
     this.lives = lives;
     this.score = score;
     this.sprite = 'images/char-boy.png';
+    this.speedX = speedX;
+    this.speedY = speedY;
 
 }
 
@@ -48,22 +50,26 @@ Player.prototype.increaseScore = function() {
 
 Player.prototype.update = function() {
     if (this.y === -10) { this.increaseScore(); }
-    switch (this.direction) {
-        case "up":
-            this.y -= 80;
-            break;
-        case 'down':
-            this.y += 80;
-            break;
-        case "left":
-            this.x -= 101;
-            break;
-        case "right":
-            this.x += 101;
-            break;
-    }
+    this.x +=this.speedX;
+    this.y +=this.speedY;
 
-    this.direction = "";
+    // switch (this.direction) {
+    //     case "up":
+    //         this.y -= 80;
+    //         break;
+    //     case 'down':
+    //         this.y += 80;
+    //         break;
+    //     case "left":
+    //         this.x -= 101;
+    //         break;
+    //     case "right":
+    //         this.x += 101;
+    //         break;
+    // }
+
+    this.speedY = 0;
+    this.speedX = 0;
 };
 
 Player.prototype.render = function() {
@@ -76,19 +82,19 @@ Player.prototype.handleInput = function(direction) {
 
         case "up":
             if (this.y < 0) { break };
-            this.direction = "up";
+            this.speedY = -80;
             break;
         case "down":
             if (this.y > 350) { break };
-            this.direction = 'down';
+            this.speedY = 80;
             break;
         case "left":
             if (this.x < 100) { break };
-            this.direction = 'left';
+            this.speedX = -101;
             break;
         case "right":
             if (this.x > 350) { break };
-            this.direction = 'right';
+            this.speedX = 101;
             break;
     }
 };
@@ -103,7 +109,7 @@ const enemy3 = new Enemy(0, 230, 300);
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [enemy1, enemy2, enemy3];
 // Place the player object in a variable called player
-const player = new Player(202, 390, 3, 0); // x , y, lives score
+const player = new Player(202, 390, 3, 0, 0, 0); // x , y, lives score speedX, speedY
 
 
 

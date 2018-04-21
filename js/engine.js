@@ -83,7 +83,7 @@ var Engine = (function(global) {
 
     function checkCollisions() {
         allEnemies.forEach(function(element) {
-            if (element.y === player.y && (element.x >= player.x - 60 && element.x <= player.x + 70)) {
+            if (element.y === player.y && (element.x >= player.x - 50 && element.x <= player.x + 50)) {
                 document.body.style = "background: red";
                 player.y = 390;
                 player.lives -= 1;
