@@ -59,21 +59,6 @@ Player.prototype.update = function() {
     this.x +=this.speedX;
     this.y +=this.speedY;
 
-    // switch (this.direction) {
-    //     case "up":
-    //         this.y -= 80;
-    //         break;
-    //     case 'down':
-    //         this.y += 80;
-    //         break;
-    //     case "left":
-    //         this.x -= 101;
-    //         break;
-    //     case "right":
-    //         this.x += 101;
-    //         break;
-    // }
-
     this.speedY = 0;
     this.speedX = 0;
 };

@@ -79,8 +79,11 @@ var Engine = (function(global) {
      */
      function endGame() {
         alert('Game over!');
-        player.lives = 3;
-        player.score = 0;
+        reset();
+     }
+
+     function win() {
+
      }
 
     function checkCollisions() {
@@ -97,8 +100,8 @@ var Engine = (function(global) {
     }
 
     function update(dt) {
-        if (player.lives < 1) {endGame();}
         updateEntities(dt);
+         if (player.lives < 1) {endGame();}
         checkCollisions();
 
     }
@@ -182,7 +185,8 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        // noop
+        player.lives = 3;
+        player.score = 0;
     }
 
     /* Go ahead and load all of the images we know we're going to need to
