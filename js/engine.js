@@ -94,6 +94,8 @@ var Engine = (function(global) {
                 player.y = 390;
                 player.x = 202;
                 player.lives -= 1;
+                const lives = document.querySelector('#lives');
+                lives.textContent = player.lives;
                 console.log('die');
             }
         });
