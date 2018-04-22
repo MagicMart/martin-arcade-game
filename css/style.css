@@ -2,9 +2,7 @@ body {
     text-align: center;
 }
 
-#score-place {
-    position: absolute;
-    left: 200px;
-    top: 20px;
+#score-place, #lives-place {
+
     font-size: 2em;
 }
