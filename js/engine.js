@@ -86,6 +86,7 @@ var Engine = (function(global) {
             if (element.y === player.y && (element.x >= player.x - 50 && element.x <= player.x + 50)) {
                 document.body.style = "background: red";
                 player.y = 390;
+                player.x = 202;
                 player.lives -= 1;
                 if (player.lives < 1) {endGame();}
                 setTimeout(function() { document.body.style = "background: white" }, 1000);
