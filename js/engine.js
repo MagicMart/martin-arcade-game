@@ -87,8 +87,10 @@ var Engine = (function(global) {
      }
 
     function checkCollisions() {
-        allEnemies.forEach(function(element) {
-            if (element.y === player.y && (element.x >= player.x - 50 && element.x <= player.x + 50)) {
+        allEnemies.forEach(function(enemy) {
+            let diff = player.x - enemy.x;
+            if (diff < 0) {diff *= -1};
+            if (enemy.y === player.y && diff < 50 ) {
                 document.body.style = "background: red";
                 setTimeout(function() { document.body.style = "background: white" }, 1000);
                 player.y = 390;
