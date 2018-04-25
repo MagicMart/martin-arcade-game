@@ -92,6 +92,7 @@ var Engine = (function(global) {
         player.y = 390;
         player.x = 202;
         player.lives -= 1;
+        allHearts.shift();
         const lives = document.querySelector('#lives');
         lives.textContent = player.lives;
     }
@@ -184,6 +185,10 @@ var Engine = (function(global) {
             enemy.render();
         });
 
+        allHearts.forEach(function(heart) {
+            heart.render();
+        });
+
         player.render();
     }
 
@@ -192,8 +197,10 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
+        'use strict';
         player.lives = 3;
         player.score = 0;
+        allHearts =[heart3, heart2, heart1];
     }
 
     /* Go ahead and load all of the images we know we're going to need to
@@ -205,7 +212,8 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/Heart.png'
     ]);
     Resources.onReady(init);
 

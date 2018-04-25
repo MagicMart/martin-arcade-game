@@ -102,7 +102,21 @@ const allEnemies = [enemy1, enemy2, enemy3];
 // Place the player object in a variable called player
 const player = new Player(202, 390, 3, 0, 0, 0); // x , y, lives score speedX, speedY
 
+const Heart = function (x,y) {
+    this.x = x;
+    this.y = y;
+    this.sprite = 'images/Heart.png';
+}
 
+const heart1 = new Heart(0, 470);
+const heart2 = new Heart(40, 470);
+const heart3 = new Heart(80, 470);
+
+let allHearts = [heart3, heart2, heart1];
+
+Heart.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
