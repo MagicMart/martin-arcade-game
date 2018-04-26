@@ -46,6 +46,7 @@ Player.prototype.increaseScore = function() {
     this.y = 390;
 
 
+
 }
 
 Player.prototype.update = function() {
@@ -117,6 +118,33 @@ let allHearts = [heart3, heart2, heart1];
 Heart.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+
+const RandomGem = function(x,y,sprite) {
+    this.x = x;
+    this.y = y;
+    this.sprite = sprite;
+
+};
+
+RandomGem.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+function randomX() {
+    const places = [0, 101, 202, 303,404];
+    const place = Math.floor(Math.random()*5)
+    return places[place];
+}
+
+
+const gem = new RandomGem(randomX(),50, 'images/Gem Orange.png');
+
+RandomGem.prototype.update = function() {
+    if (player.y === 70 && this.x === player.x) {
+    player.score += 5;
+    this.x = randomX();
+    }
+}
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
