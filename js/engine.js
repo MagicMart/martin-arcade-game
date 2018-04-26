@@ -100,7 +100,7 @@ var Engine = (function(global) {
     function checkCollisions() {
         allEnemies.forEach(function(enemy) {
             let diff = player.x - enemy.x;
-            if (diff < 0) { diff *= -1 };
+            if (diff < 0) { diff *= -1; };
             if (enemy.y === player.y && diff < 50) {
                 collision();
             }
