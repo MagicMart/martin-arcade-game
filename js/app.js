@@ -57,8 +57,8 @@ Player.prototype.update = function() {
     lives.textContent = this.lives;
 
     if (this.y === -10) { this.increaseScore(); }
-    this.x +=this.speedX;
-    this.y +=this.speedY;
+    this.x += this.speedX;
+    this.y += this.speedY;
 
     this.speedY = 0;
     this.speedX = 0;
@@ -103,7 +103,7 @@ const allEnemies = [enemy1, enemy2, enemy3];
 // Place the player object in a variable called player
 const player = new Player(202, 390, 3, 0, 0, 0); // x , y, lives score speedX, speedY
 
-const Heart = function (x,y) {
+const Heart = function(x, y) {
     this.x = x;
     this.y = y;
     this.sprite = 'images/Heart.png';
@@ -119,7 +119,7 @@ Heart.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-const RandomGem = function(x,y,sprite) {
+const RandomGem = function(x, y, sprite) {
     this.x = x;
     this.y = y;
     this.sprite = sprite;
@@ -131,18 +131,18 @@ RandomGem.prototype.render = function() {
 };
 
 function randomX() {
-    const places = [0, 101, 202, 303,404];
-    const place = Math.floor(Math.random()*5)
+    const places = [0, 101, 202, 303, 404];
+    const place = Math.floor(Math.random() * 5)
     return places[place];
 }
 
 
-const gem = new RandomGem(randomX(),50, 'images/Gem Orange.png');
+const gem = new RandomGem(randomX(), 50, 'images/Gem Orange.png');
 
 RandomGem.prototype.update = function() {
     if (player.y === 70 && this.x === player.x) {
-    player.score += 5;
-    this.x = randomX();
+        player.score += 5;
+        this.x = randomX();
     }
 }
 

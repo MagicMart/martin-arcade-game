@@ -82,9 +82,6 @@ var Engine = (function(global) {
         reset();
     }
 
-    function win() {
-
-    }
 
     function collision() {
         document.body.style = "background: red";
@@ -99,8 +96,8 @@ var Engine = (function(global) {
 
     function checkCollisions() {
         allEnemies.forEach(function(enemy) {
-            let diff = player.x - enemy.x;
-            if (diff < 0) { diff *= -1; };
+            let diff = player.x - enemy.x; // find how close the player and the enemy are
+            if (diff < 0) { diff *= -1; }; // make negative numbers positive
             if (enemy.y === player.y && diff < 50) {
                 collision();
             }
