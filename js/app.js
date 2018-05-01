@@ -146,7 +146,7 @@ RandomGem.prototype.update = function() {
     // gem collection increases player score
     if (player.y === this.y + 20 && this.x === player.x) {
         player.score += this.prize;
-        // Change the background to orange when gem collected
+        // Change the background to gem color when gem collected
         document.body.style = 'background: '+ this.color ;
         // Revert to black background after about half a second
         setTimeout(function() { document.body.style = "background: black" }, 500);
