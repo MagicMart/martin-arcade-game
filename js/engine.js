@@ -84,8 +84,9 @@ var Engine = (function(global) {
 
 
     function collision() {
+        // Briefly change background colour to red
         document.body.style = "background: red";
-        setTimeout(function() { document.body.style = "background: white" }, 1000);
+        setTimeout(function() { document.body.style = "background: black" }, 1000);
         player.y = 390;
         player.x = 202;
         player.lives -= 1;
