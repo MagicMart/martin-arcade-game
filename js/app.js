@@ -16,6 +16,8 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    //
+    //after disappearing on the right, the enemy will soon reappear on the left
     if (this.x > 505) { this.x = -100 };
 
     this.x += this.speed * dt;
@@ -41,25 +43,22 @@ const Player = function(x, y, lives, score, speedX, speedY) {
 }
 
 Player.prototype.increaseScore = function() {
-
     this.score += 1;
     this.y = 390;
-
-
-
 }
 
 Player.prototype.update = function() {
     const score = document.querySelector('#score');
     const lives = document.querySelector('#lives');
-
+    // update the score and lives above play area
     score.textContent = this.score;
     lives.textContent = this.lives;
-
+    // when the player reaches the water increase score
     if (this.y === -10) { this.increaseScore(); }
+    // Player movement
     this.x += this.speedX;
     this.y += this.speedY;
-
+    // Make sure the player doesn't keep moving;
     this.speedY = 0;
     this.speedX = 0;
 };
@@ -69,7 +68,7 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.handleInput = function(direction) {
-
+    // the if statements don't allow player movement off play area
     switch (direction) {
 
         case "up":
@@ -101,8 +100,9 @@ const enemy3 = new Enemy(0, 230, 300);
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [enemy1, enemy2, enemy3];
 // Place the player object in a variable called player
-const player = new Player(202, 390, 3, 0, 0, 0); // x , y, lives score speedX, speedY
+const player = new Player(202, 390, 3, 0, 0, 0); // x , y, lives, score, speedX, speedY
 
+// The Player's hearts (lives)
 const Heart = function(x, y) {
     this.x = x;
     this.y = y;
@@ -130,9 +130,11 @@ RandomGem.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-function randomX() {
-    const places = [0, 101, 202, 303, 404];
+// Make random x position for gem
+function randomX(playerX) {
+    const places = [0, 101, 202, 303, 404]; // the x positions that are available
     const place = Math.floor(Math.random() * 5)
+    if (places[place]===playerX) {randomX(playerX)}
     return places[place];
 }
 
@@ -140,9 +142,10 @@ function randomX() {
 const gem = new RandomGem(randomX(), 50, 'images/Gem Orange.png');
 
 RandomGem.prototype.update = function() {
+    // gem collection increases player score
     if (player.y === 70 && this.x === player.x) {
         player.score += 5;
-        this.x = randomX();
+        this.x = randomX(player.x);
     }
 }
 
