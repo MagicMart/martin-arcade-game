@@ -4,6 +4,6 @@ body {
 }
 
 #score-place, #lives-place {
-
     font-size: 2em;
+    color: white;
 }
