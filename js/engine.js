@@ -126,6 +126,7 @@ var Engine = (function(global) {
         });
         player.update();
         gem.update();
+        gemGreen.update();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -182,6 +183,7 @@ var Engine = (function(global) {
          * the render function you have defined.
          */
         gem.render();
+        gemGreen.render();
         allEnemies.forEach(function(enemy) {
             enemy.render();
         });

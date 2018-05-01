@@ -143,7 +143,7 @@ RandomGem.prototype.randomX = function(playerX) {
 
 RandomGem.prototype.update = function() {
     // gem collection increases player score
-    if (player.y === 70 && this.x === player.x) {
+    if (player.y === this.y + 20 && this.x === player.x) {
         player.score += this.prize;
         // Change the background to orange when gem collected
         document.body.style = 'background: orange';
@@ -154,6 +154,7 @@ RandomGem.prototype.update = function() {
 }
 
 const gem = new RandomGem(50, 'images/Gem Orange.png', 5);
+const gemGreen = new RandomGem(130,'images/Gem Green.png', 3)
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
