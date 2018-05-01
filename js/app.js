@@ -133,8 +133,10 @@ RandomGem.prototype.render = function() {
 // Make random x position for gem
 function randomX(playerX) {
     const places = [0, 101, 202, 303, 404]; // the x positions that are available
-    const place = Math.floor(Math.random() * 5)
-    if (places[place]===playerX) {randomX(playerX)}
+    const place = Math.floor(Math.random() * 5);
+    // Make sure gem can't reappear (briefly) in the same place as the player
+    // If randomX is the same as playerX, call randomX again
+    if (places[place] === playerX) { randomX(playerX) }
     return places[place];
 }
 
@@ -145,6 +147,10 @@ RandomGem.prototype.update = function() {
     // gem collection increases player score
     if (player.y === 70 && this.x === player.x) {
         player.score += 5;
+        // Change the background to orange when gem collected
+        document.body.style = 'background: orange';
+        // Revert to black background after about half a second
+        setTimeout(function() { document.body.style = "background: black" }, 500);
         this.x = randomX(player.x);
     }
 }
