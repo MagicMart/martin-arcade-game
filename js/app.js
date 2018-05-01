@@ -119,11 +119,12 @@ Heart.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-const RandomGem = function( y, sprite, prize) {
+const RandomGem = function( y, sprite, prize, color) {
     this.x = this.randomX(player.x);
     this.y = y;
     this.sprite = sprite;
     this.prize = prize;
+    this.color = color;
 
 };
 
@@ -146,15 +147,15 @@ RandomGem.prototype.update = function() {
     if (player.y === this.y + 20 && this.x === player.x) {
         player.score += this.prize;
         // Change the background to orange when gem collected
-        document.body.style = 'background: orange';
+        document.body.style = 'background: '+ this.color ;
         // Revert to black background after about half a second
         setTimeout(function() { document.body.style = "background: black" }, 500);
         this.x = this.randomX(player.x);
     }
 }
 
-const gem = new RandomGem(50, 'images/Gem Orange.png', 5);
-const gemGreen = new RandomGem(130,'images/Gem Green.png', 3)
+const gem = new RandomGem(50, 'images/Gem Orange.png', 5, 'orange');
+const gemGreen = new RandomGem(130,'images/Gem Green.png', 3, 'green')
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
