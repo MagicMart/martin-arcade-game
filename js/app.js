@@ -119,8 +119,8 @@ Heart.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-const RandomGem = function(x, y, sprite) {
-    this.x = x;
+const RandomGem = function( y, sprite) {
+    this.x = this.randomX(player.x);
     this.y = y;
     this.sprite = sprite;
 
@@ -131,17 +131,14 @@ RandomGem.prototype.render = function() {
 };
 
 // Make random x position for gem
-function randomX(playerX) {
+RandomGem.prototype.randomX = function(playerX) {
     const places = [0, 101, 202, 303, 404]; // the x positions that are available
     const place = Math.floor(Math.random() * 5);
     // Make sure gem can't reappear (briefly) in the same place as the player
     // If randomX is the same as playerX, call randomX again
-    if (places[place] === playerX) { randomX(playerX) }
+    if (places[place] === playerX) { this.randomX(playerX) }
     return places[place];
 }
-
-
-const gem = new RandomGem(randomX(), 50, 'images/Gem Orange.png');
 
 RandomGem.prototype.update = function() {
     // gem collection increases player score
@@ -151,9 +148,11 @@ RandomGem.prototype.update = function() {
         document.body.style = 'background: orange';
         // Revert to black background after about half a second
         setTimeout(function() { document.body.style = "background: black" }, 500);
-        this.x = randomX(player.x);
+        this.x = this.randomX(player.x);
     }
 }
+
+const gem = new RandomGem(50, 'images/Gem Orange.png');
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
