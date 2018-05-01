@@ -78,7 +78,7 @@ var Engine = (function(global) {
      * on the entities themselves within your app.js file).
      */
     function endGame() {
-        alert('Game over!');
+        alert('Game over! Your score: ' + player.score);
         reset();
     }
 
