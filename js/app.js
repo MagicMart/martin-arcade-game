@@ -71,19 +71,19 @@ Player.prototype.handleInput = function(direction) {
     // the if statements don't allow player movement off play area
     switch (direction) {
 
-        case "up":
+        case 'up':
             if (this.y < 0) { break };
             this.speedY = -80;
             break;
-        case "down":
+        case 'down':
             if (this.y > 350) { break };
             this.speedY = 80;
             break;
-        case "left":
+        case 'left':
             if (this.x < 100) { break };
             this.speedX = -101;
             break;
-        case "right":
+        case 'right':
             if (this.x > 350) { break };
             this.speedX = 101;
             break;
@@ -149,7 +149,7 @@ RandomGem.prototype.update = function() {
         // Change the background to gem color when gem collected
         document.body.style = 'background: '+ this.color ;
         // Revert to black background after about half a second
-        setTimeout(function() { document.body.style = "background: black" }, 500);
+        setTimeout(function() { document.body.style = 'background: black' }, 500);
         this.x = this.randomX(player.x);
     }
 }
