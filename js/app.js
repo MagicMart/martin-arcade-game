@@ -154,7 +154,7 @@ RandomGem.prototype.update = function() {
     }
 }
 
-const gem = new RandomGem(50, 'images/Gem Orange.png', 5, 'orange');
+const gem = new RandomGem(50, 'images/Gem Orange.png', 5, 'orange'); // y, image, background-color
 const gemGreen = new RandomGem(130,'images/Gem Green.png', 3, 'green')
 
 // This listens for key presses and sends the keys to your
