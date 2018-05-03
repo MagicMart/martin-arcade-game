@@ -1,5 +1,6 @@
 // Enemies our player must avoid
-var Enemy = function(x, y, speed) {
+'use strict';
+const Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     this.x = x;
@@ -18,7 +19,7 @@ Enemy.prototype.update = function(dt) {
     // all computers.
     //
     //after disappearing on the right, the enemy will soon reappear on the left
-    if (this.x > 505) { this.x = -100 };
+    if (this.x > 505) { this.x = -100; }
 
     this.x += this.speed * dt;
 };
@@ -40,14 +41,15 @@ const Player = function(x, y, lives, score, speedX, speedY) {
     this.speedX = speedX;
     this.speedY = speedY;
 
-}
+};
 
 Player.prototype.increaseScore = function() {
     this.score += 1;
     this.y = 390;
-}
+};
 
 Player.prototype.update = function() {
+    'use strict';
     const score = document.querySelector('#score');
     const lives = document.querySelector('#lives');
     // update the score and lives above play area
@@ -64,27 +66,29 @@ Player.prototype.update = function() {
 };
 
 Player.prototype.render = function() {
+    'use strict';
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 Player.prototype.handleInput = function(direction) {
+    'use strict';
     // the if statements don't allow player movement off play area
     switch (direction) {
 
         case 'up':
-            if (this.y < 0) { break };
+            if (this.y < 0) { break; }
             this.speedY = -80;
             break;
         case 'down':
-            if (this.y > 350) { break };
+            if (this.y > 350) { break; }
             this.speedY = 80;
             break;
         case 'left':
-            if (this.x < 100) { break };
+            if (this.x < 100) { break; }
             this.speedX = -101;
             break;
         case 'right':
-            if (this.x > 350) { break };
+            if (this.x > 350) { break; }
             this.speedX = 101;
             break;
     }
@@ -107,7 +111,7 @@ const Heart = function(x, y) {
     this.x = x;
     this.y = y;
     this.sprite = 'images/Heart.png';
-}
+};
 
 const heart1 = new Heart(0, 470);
 const heart2 = new Heart(40, 470);
@@ -138,9 +142,9 @@ RandomGem.prototype.randomX = function(playerX) {
     const place = Math.floor(Math.random() * 5);
     // Make sure gem can't reappear (briefly) in the same place as the player
     // If randomX is the same as playerX, call randomX again
-    if (places[place] === playerX) { this.randomX(playerX) }
+    if (places[place] === playerX) { this.randomX(playerX); }
     return places[place];
-}
+};
 
 RandomGem.prototype.update = function() {
     // gem collection increases player score
@@ -149,13 +153,13 @@ RandomGem.prototype.update = function() {
         // Change the background to gem color when gem collected
         document.body.style = 'background: '+ this.color ;
         // Revert to black background after about half a second
-        setTimeout(function() { document.body.style = 'background: black' }, 500);
+        setTimeout(function() { document.body.style = 'background: black'; }, 500);
         this.x = this.randomX(player.x);
     }
-}
+};
 
 const gem = new RandomGem(50, 'images/Gem Orange.png', 5, 'orange'); // y, image, background-color
-const gemGreen = new RandomGem(130,'images/Gem Green.png', 3, 'green')
+const gemGreen = new RandomGem(130,'images/Gem Green.png', 3, 'green');
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
