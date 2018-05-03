@@ -49,7 +49,6 @@ Player.prototype.increaseScore = function() {
 };
 
 Player.prototype.update = function() {
-    'use strict';
     const score = document.querySelector('#score');
     const lives = document.querySelector('#lives');
     // update the score and lives above play area
@@ -66,12 +65,10 @@ Player.prototype.update = function() {
 };
 
 Player.prototype.render = function() {
-    'use strict';
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 Player.prototype.handleInput = function(direction) {
-    'use strict';
     // the if statements don't allow player movement off play area
     switch (direction) {
 
@@ -123,7 +120,7 @@ Heart.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-const RandomGem = function( y, sprite, prize, color) {
+const RandomGem = function(y, sprite, prize, color) {
     this.x = this.randomX(player.x);
     this.y = y;
     this.sprite = sprite;
@@ -151,7 +148,7 @@ RandomGem.prototype.update = function() {
     if (player.y === this.y + 20 && this.x === player.x) {
         player.score += this.prize;
         // Change the background to gem color when gem collected
-        document.body.style = 'background: '+ this.color ;
+        document.body.style = 'background: ' + this.color;
         // Revert to black background after about half a second
         setTimeout(function() { document.body.style = 'background: black'; }, 500);
         this.x = this.randomX(player.x);
@@ -159,7 +156,7 @@ RandomGem.prototype.update = function() {
 };
 
 const gem = new RandomGem(50, 'images/Gem Orange.png', 5, 'orange'); // y, image, background-color
-const gemGreen = new RandomGem(130,'images/Gem Green.png', 3, 'green');
+const gemGreen = new RandomGem(130, 'images/Gem Green.png', 3, 'green');
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
