@@ -86,7 +86,7 @@ var Engine = (function(global) {
     function collision() {
         // Briefly change background colour to red
         document.body.style = 'background: red';
-        setTimeout(function() { document.body.style = 'background: black' }, 1000);
+        setTimeout(function() { document.body.style = 'background: black'; }, 1000);
         player.y = 390;
         player.x = 202;
         player.lives -= 1;
@@ -98,7 +98,7 @@ var Engine = (function(global) {
     function checkCollisions() {
         allEnemies.forEach(function(enemy) {
             let diff = player.x - enemy.x; // find how close the player and the enemy are
-            if (diff < 0) { diff *= -1; }; // make negative numbers positive
+            if (diff < 0) { diff *= -1; } // make negative numbers positive
             if (enemy.y === player.y && diff < 50) {
                 collision();
             }
@@ -152,7 +152,7 @@ var Engine = (function(global) {
             row, col;
 
         // Before drawing, clear existing canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         /* Loop through the number of rows and columns we've defined above
          * and, using the rowImages array, draw the correct image for that
@@ -200,7 +200,6 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        'use strict';
         player.lives = 3;
         player.score = 0;
         allHearts = [heart3, heart2, heart1];
