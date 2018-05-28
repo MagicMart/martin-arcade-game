@@ -135,11 +135,15 @@ RandomGem.prototype.render = function() {
 
 // Make random x position for gem
 RandomGem.prototype.randomX = function(playerX) {
-    const places = [0, 101, 202, 303, 404]; // the x positions that are available
-    const place = Math.floor(Math.random() * 5);
-    // Make sure gem can't reappear (briefly) in the same place as the player
-    // If randomX is the same as playerX, call randomX again
-    if (places[place] === playerX) { this.randomX(playerX); }
+    // the x positions that are available
+    const places = [0, 101, 202, 303, 404]; 
+    // Find the player's place
+    const playerPlace = places.indexOf(playerX);
+    // Remove it from the array - so that gem does not reappear
+    // where the player is
+    places.splice(playerPlace, 1);
+    // Generate a random place for the gem
+    const place = Math.floor(Math.random() * 4);
     return places[place];
 };
 
